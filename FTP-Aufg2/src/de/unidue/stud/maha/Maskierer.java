@@ -8,5 +8,3 @@ import SoFTlib.SoFTException;
 
 
 public class Maskierer extends Node{
-
-}
