@@ -1,16 +1,20 @@
 package de.unidue.stud.maha;
 
+
 import static SoFTlib.Helper.number;
 import static SoFTlib.Helper.words;
+
+
 import SoFTlib.Node;
 import SoFTlib.SoFT;
 
-/**
- * 
- */
 
-/** @author Hanno - Felix Wagner */
+
 public class Main extends SoFT {
+
+
+
+
 
 	/** @param args */
 	public static void main(String[] args) {
@@ -23,6 +27,7 @@ public class Main extends SoFT {
 		return resultVal;
 	}
 	
+
 	public int determineResult(int firstInput, int secondInput, int thirdInput,int firstValue, int secondValue, int thirdValue){
 		int max=Math.max(thirdInput,Math.max(firstInput, secondInput));
 		int min=Math.min(thirdInput,Math.min(firstInput, secondInput));
@@ -36,12 +41,33 @@ public class Main extends SoFT {
 		}
 		return 4; //sonst
 	}
+	public static int TIMEOUT = 200;
+
+	public static int getInputIndex(char Knoten) {
+		if (Knoten == 'A')
+			return 1;
+		if (Knoten == 'B')
+			return 2;
+		if (Knoten == 'C')
+			return 3;
+		return -1;
+	}
+
+	public static String getMaskierer() {
+		return "DEF";
+
+	}
 	
+
 	public static boolean isValid(int val, int min, int max){
 		if(val>min && val < max){
 			return true;
 		} else {
 			return false;
 		}
+	}
+	public static String getProzesse() {
+		return "ABC";
+
 	}
 }
