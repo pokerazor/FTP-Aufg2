@@ -1,4 +1,4 @@
-import static SoFTlib.Helper.words;
+package de.unidue.stud.maha;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,33 +23,27 @@ public class Maskierer extends Node {
 			if (receive != null)
 				ergebnisse.add(Integer.valueOf(receive.getCo()));
 		}
-		
+
 		Collections.sort(ergebnisse);
-		
-		
-		if(ergebnisse.size()==prozesse.length()) return ergebnisse.get(1).toString();
-		else if(ergebnisse.size())
 
-		return "1";
+		if (ergebnisse.size() == prozesse.length())
+			return String.valueOf(getMedian(ergebnisse));
+		else if (ergebnisse.size() == 2)
+			return ergebnisse.get(0).toString();
+		return "-1";
 	}
 
-	public static int TIMEOUT = 200;
+	private double getMedian(ArrayList<Integer> ergebnisse) {
 
-	public static int getInputIndex(char Knoten) {
-		if (Knoten == 'A')
-			return 1;
-		if (Knoten == 'B')
-			return 2;
-		if (Knoten == 'C')
-			return 3;
-		return -1;
-	}
+		double median = 0;
+		double pos1 = Math.floor((ergebnisse.size() - 1.0) / 2.0);
+		double pos2 = Math.ceil((ergebnisse.size() - 1.0) / 2.0);
+		if (pos1 == pos2) {
+			median = ergebnisse.get((int) pos1);
+		} else {
+			median = (ergebnisse.get((int) pos1) + ergebnisse.get((int) pos2)) / 2.0;
+		}
 
-	public static String getMaskierer() {
-		return "DEF";
-	}
-
-	public static String getProzesse() {
-		return "ABC";
+		return median;
 	}
 }

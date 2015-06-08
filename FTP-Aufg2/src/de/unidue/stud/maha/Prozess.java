@@ -1,10 +1,13 @@
 package de.unidue.stud.maha;
 
+
 import static SoFTlib.Helper.words;
 import SoFTlib.Node;
 import SoFTlib.SoFTException;
 
+
 public class Prozess extends Node {
+
 
 	public Prozess(String name) {
 		this.setName(name);
