@@ -34,9 +34,7 @@ public class Main extends SoFT {
 				return 1; //wenn andernfalls alle drei Rückgabewerte korrekt, aber nicht übereinstimmend sind (d.h. mindestens ein Wert unterscheidet sich von den beiden anderen),
 			}
 		}
-		
 		return 4; //sonst
-		
 	}
 	
 	public static boolean isValid(int val, int min, int max){
@@ -45,7 +43,5 @@ public class Main extends SoFT {
 		} else {
 			return false;
 		}
-		
 	}
-
 }
