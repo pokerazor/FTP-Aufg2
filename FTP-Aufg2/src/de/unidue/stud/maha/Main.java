@@ -18,7 +18,7 @@ public class Main extends SoFT {
 
 	/** @param args */
 	public static void main(String[] args) {
-		Node[] nodes={ new Prozess(), new Prozess(), new Prozess(), new Maskierer(), new Maskierer(), new Maskierer() };
+		Node[] nodes={ new Prozess(null), new Prozess(null), new Prozess(null), new Maskierer(), new Maskierer(), new Maskierer() };
 		new Main().runSystem(nodes , "m²-Protokoll", "Aufgabe 2", "Marc Gesthüsen, Hanno - Felix Wagner");
 	}
 
