@@ -15,12 +15,19 @@ public class Prozess extends Node {
 
 	public String runNode(String input) throws SoFTException {
 		int index = Main.getInputIndex(myChar());
-		int zahl = Integer.valueOf(words(input, 1, index, index));
+		int zahl = -1;
+
+		try {
+			zahl =Integer.valueOf(words(input, 1, index, index));
+
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+		}
 		String maskierer = Main.getMaskierer();
 
 		// Senden der e-Nachricht an alle Maskierer
 		form('e', zahl).send(maskierer);
 
-		return "0";
+		return ""+zahl;
 	}
 }

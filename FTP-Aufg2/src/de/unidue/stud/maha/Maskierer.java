@@ -20,8 +20,15 @@ public class Maskierer extends Node {
 		// Empfangen der e-Nachrichten aller Prozesselemente
 		for (int i = 0; i < prozesse.length(); i++) {
 			Msg receive = receive(prozesse, 'e', Main.TIMEOUT);
-			if (receive != null)
-				ergebnisse.add(Integer.valueOf(receive.getCo()));
+			if (receive != null){
+				int curVal=-1;
+				try {
+					curVal=Integer.valueOf(receive.getCo());
+				} catch (NumberFormatException e) {
+					// TODO: handle exception
+				}
+				ergebnisse.add(curVal);
+			}
 		}
 
 		Collections.sort(ergebnisse);

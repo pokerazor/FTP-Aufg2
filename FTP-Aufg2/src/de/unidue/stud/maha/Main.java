@@ -27,15 +27,14 @@ public class Main extends SoFT {
 		max = Math.max(thirdInput, Math.max(firstInput, secondInput));
 		min = Math.min(thirdInput, Math.min(firstInput, secondInput));
 		
-		System.out.println("max"+max);
-		System.out.println("min"+min);
-		System.out.println("firstInput"+firstInput);
-		System.out.println("secondInput"+secondInput);
-		System.out.println("thirdInput"+thirdInput);
-		System.out.println("firstValue"+firstValue);
-		System.out.println("secondValue"+secondValue);
-		System.out.println("thirdValue"+thirdValue);
-
+//		System.out.println("max"+max);
+//		System.out.println("min"+min);
+//		System.out.println("firstInput"+firstInput);
+//		System.out.println("secondInput"+secondInput);
+//		System.out.println("thirdInput"+thirdInput);
+//		System.out.println("firstValue"+firstValue);
+//		System.out.println("secondValue"+secondValue);
+//		System.out.println("thirdValue"+thirdValue);
 		if (isValid(firstValue) && isValid(secondValue) && isValid(thirdValue)) {
 			if (firstValue == secondValue && firstValue == thirdValue) {
 				return 0; // wenn alle drei Rückgabewerte korrekt und übereinstimmend sind
@@ -66,7 +65,7 @@ public class Main extends SoFT {
 		return 4; // sonst
 	}
 
-	public static int TIMEOUT = 200;
+	public static int TIMEOUT = 2000;
 
 	private int max = -1;
 	private int min = -1;
@@ -86,6 +85,9 @@ public class Main extends SoFT {
 	}
 
 	public boolean isValid(int val) {
+		if(val == -1){
+			return false;
+		}
 		if (val >= min && val <= max) {
 			return true;
 		} else {
