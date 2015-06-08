@@ -1,5 +1,7 @@
 package de.unidue.stud.maha;
 
-public class Maskierer {
+import SoFTlib.Node;
+
+public class Maskierer extends Node{
 
 }
