@@ -23,25 +23,49 @@ public class Main extends SoFT {
 	}
 
 	public int result(String input, String[] output) {
+		
 		int resultVal=determineResult( number(words(input, 1, 1, 1)),number(words(input, 2, 1, 1)),number(words(input, 3, 1, 1)), number(words(output[3], 1, 1, 1)), number(words(output[4], 1, 1, 1)), number(words(output[5], 1, 1, 1)));
 		return resultVal;
 	}
 	
 
 	public int determineResult(int firstInput, int secondInput, int thirdInput,int firstValue, int secondValue, int thirdValue){
-		int max=Math.max(thirdInput,Math.max(firstInput, secondInput));
-		int min=Math.min(thirdInput,Math.min(firstInput, secondInput));
+		max=Math.max(thirdInput,Math.max(firstInput, secondInput));
+		min=Math.min(thirdInput,Math.min(firstInput, secondInput));
 
-		if(isValid(firstValue,min,max) && isValid(secondValue,min,max) && isValid(thirdValue,min,max)){
+		if(isValid(firstValue) && isValid(secondValue) && isValid(thirdValue)){
 			if (firstValue==secondValue && firstValue==thirdValue){
 				return 0; //wenn alle drei Rückgabewerte korrekt und übereinstimmend sind
 			} else {
 				return 1; //wenn andernfalls alle drei Rückgabewerte korrekt, aber nicht übereinstimmend sind (d.h. mindestens ein Wert unterscheidet sich von den beiden anderen),
 			}
+		} else {
+			if(isValid(firstValue) && isValid(secondValue)){
+				if (firstValue==secondValue){
+					return 2; // wenn andernfalls 2 der 3 der Rückgabewerte korrekt und übereinstimmend sind,
+				} else {
+					return 3; // wenn andernfalls 2 der 3 Rückgabewerte korrekt, aber nicht übereinstimmend sind,
+				}
+			}else if(isValid(firstValue) && isValid(thirdValue)){
+				if (firstValue==thirdValue){
+					return 2;
+				} else {
+					return 3;
+				}
+			}else if(isValid(secondValue) && isValid(thirdValue)){
+				if (secondValue==thirdValue){
+					return 2;
+				} else {
+					return 3;
+				}
+			}
 		}
 		return 4; //sonst
 	}
 	public static int TIMEOUT = 200;
+	
+	private int max=-1;
+	private int min=-1;
 
 	public static int getInputIndex(char Knoten) {
 		if (Knoten == 'A')
@@ -59,7 +83,7 @@ public class Main extends SoFT {
 	}
 	
 
-	public static boolean isValid(int val, int min, int max){
+	public boolean isValid(int val){
 		if(val>min && val < max){
 			return true;
 		} else {
