@@ -15,7 +15,7 @@ public class Prozess extends Node {
 
 	public String runNode(String input) throws SoFTException {
 		int index = Main.getInputIndex(myChar());
-		int zahl = Integer.valueOf(words(input, 1, index, 1));
+		int zahl = Integer.valueOf(words(input, 1, index, index));
 		String maskierer = Main.getMaskierer();
 
 		// Senden der e-Nachricht an alle Maskierer

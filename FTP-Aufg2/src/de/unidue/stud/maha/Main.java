@@ -16,7 +16,7 @@ public class Main extends SoFT {
 
 	public int result(String input, String[] output) {
 
-		int resultVal = determineResult(number(words(input, 1, 1, 1)), number(words(input, 2, 1, 1)), number(words(input, 3, 1, 1)), number(words(output[3], 1, 1, 1)), number(words(output[4], 1, 1, 1)), number(words(output[5], 1, 1, 1)));
+		int resultVal = determineResult(number(words(input, 1, 1, 1)), number(words(input, 1, 2, 2)), number(words(input, 1, 3, 3)), number(words(output[3], 1, 1, 1)), number(words(output[4], 1, 1, 1)), number(words(output[5], 1, 1, 1)));
 		return resultVal;
 	}
 
