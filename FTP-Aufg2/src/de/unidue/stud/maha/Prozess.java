@@ -23,7 +23,7 @@ public class Prozess extends Node {
 		} catch (NumberFormatException e) {
 			// TODO: handle exception
 		}
-		String maskierer = Main.getMaskierer();
+		String maskierer = Main.MASKIERER_1;
 
 		// Senden der e-Nachricht an alle Maskierer
 		form('e', zahl).send(maskierer);

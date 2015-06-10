@@ -9,21 +9,27 @@ import SoFTlib.SoFTException;
 
 public class Maskierer extends Node {
 
-	public Maskierer(String name) {
+	private String source;
+	private String target;
+	private int timeOut;
+
+	public Maskierer(String name, String source, String target, int timeOut) {
 		this.setName(name);
+		this.source = source;
+		this.target = target;
+		this.timeOut = timeOut;
 	}
 
 	public String runNode(String input) throws SoFTException {
-		String prozesse = Main.getProzesse();
-		ArrayList<Integer> ergebnisse = new ArrayList<Integer>();
+		ArrayList<Double> ergebnisse = new ArrayList<Double>();
 
 		// Empfangen der e-Nachrichten aller Prozesselemente
-		for (int i = 0; i < prozesse.length(); i++) {
-			Msg receive = receive(prozesse, 'e', Main.TIMEOUT);
-			if (receive != null){
-				int curVal=-1;
+		for (int i = 0; i < source.length(); i++) {
+			Msg receive = receive(source, 'e', timeOut);
+			if (receive != null) {
+				double curVal = -1;
 				try {
-					curVal=Integer.valueOf(receive.getCo());
+					curVal = Double.valueOf(receive.getCo());
 				} catch (NumberFormatException e) {
 					// TODO: handle exception
 				}
@@ -33,14 +39,20 @@ public class Maskierer extends Node {
 
 		Collections.sort(ergebnisse);
 
-		if (ergebnisse.size() == prozesse.length())
-			return String.valueOf(getMedian(ergebnisse));
+		double median = -1.0;
+
+		if (ergebnisse.size() == source.length())
+			median = getMedian(ergebnisse);
 		else if (ergebnisse.size() == 2)
-			return ergebnisse.get(0).toString();
-		return "-1";
+			median = Double.valueOf(ergebnisse.get(0).toString());
+
+		if(target!=null){
+			form('e', median).send(target);
+		}
+		return String.valueOf(median);
 	}
 
-	private double getMedian(ArrayList<Integer> ergebnisse) {
+	private double getMedian(ArrayList<Double> ergebnisse) {
 
 		double median = 0;
 		double pos1 = Math.floor((ergebnisse.size() - 1.0) / 2.0);
